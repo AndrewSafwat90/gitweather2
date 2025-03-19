@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gitweather2/views/home-view.dart';
 
 void main() {
   runApp(const GitWeather2());
@@ -10,6 +11,8 @@ class GitWeather2 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      home: HomeView(),
+    );
   }
 }
