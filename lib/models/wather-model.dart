@@ -1,4 +1,4 @@
-class WeaterModel {
+class WeatherModel {
   final String cityName;
   final String date;
   final String? image;
@@ -7,7 +7,7 @@ class WeaterModel {
   final double mintemp;
   final String weatherCondition;
 
-  WeaterModel(
+  WeatherModel(
       {required this.cityName,
       required this.date,
       required this.image,
@@ -16,8 +16,8 @@ class WeaterModel {
       required this.mintemp,
       required this.weatherCondition});
 
-  factory WeaterModel.fromJson(json) {
-    return WeaterModel(
+  factory WeatherModel.fromJson(json) {
+    return WeatherModel(
         cityName: json['location']['name'],
         date: json['current']['last_updated'],
         image: json['forecast']['forecastday'][0]['day']['condition']['icon'],
