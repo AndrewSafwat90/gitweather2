@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gitweather2/views/search-view.dart';
 import 'package:gitweather2/widgets/no-weather-body.dart';
-import 'package:gitweather2/widgets/weather-info-body.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
