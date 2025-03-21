@@ -1,3 +1,5 @@
+import 'package:gitweather2/models/wather-model.dart';
+
 class WeatherState {}
 
 class NoWeatherState extends WeatherState {}

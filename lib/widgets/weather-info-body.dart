@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gitweather2/cubits/get-weather-cubit/get-weather-cubit.dart';
+import 'package:gitweather2/models/wather-model.dart';
 
 class WeatherInfoBody extends StatelessWidget {
   const WeatherInfoBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    WeatherModel weatherModel =
+        BlocProvider.of<GetWeatherCubit>(context).weatherModel;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Text(
-          'Alexandria',
+          weatherModel.cityName,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 32,
