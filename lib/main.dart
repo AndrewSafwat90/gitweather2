@@ -17,7 +17,7 @@ class GitWeather2 extends StatelessWidget {
       create: (context) => GetWeatherCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(useMaterial3: false),
+        theme: ThemeData(useMaterial3: false, primarySwatch: Colors.amber),
         home: HomeView(),
       ),
     );
