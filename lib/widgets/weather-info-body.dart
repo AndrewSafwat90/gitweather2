@@ -10,6 +10,9 @@ class WeatherInfoBody extends StatelessWidget {
   Widget build(BuildContext context) {
     WeatherModel weatherModel =
         BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+    var image = weatherModel.image!.contains('http')
+        ? weatherModel.image
+        : 'http:${weatherModel.image}';
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -21,7 +24,7 @@ class WeatherInfoBody extends StatelessWidget {
           ),
         ),
         Text(
-          'updated at 23:46',
+          'Updated at ${weatherModel.date.hour} : ${weatherModel.date.minute}',
           style: TextStyle(
             fontSize: 24,
           ),
@@ -32,11 +35,11 @@ class WeatherInfoBody extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              'assets/images/cloudy.png',
+            Image.network(
+              image!,
             ),
             Text(
-              '17',
+              weatherModel.temperature.round().toString(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
@@ -45,13 +48,13 @@ class WeatherInfoBody extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  'Maxtemp: 24',
+                  'Maxtemp: ${weatherModel.maxtemp.round()}',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
                 Text(
-                  'Mintemp: 16',
+                  'Mintemp: ${weatherModel.mintemp.round()}',
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -64,7 +67,7 @@ class WeatherInfoBody extends StatelessWidget {
           height: 32,
         ),
         Text(
-          'Ligh Rain',
+          weatherModel.weatherCondition,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 32,
