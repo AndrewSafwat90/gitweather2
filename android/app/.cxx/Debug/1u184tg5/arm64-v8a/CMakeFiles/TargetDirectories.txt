@@ -1,0 +1,2 @@
+D:/new project D/gitweather2/android/app/.cxx/Debug/1u184tg5/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/new project D/gitweather2/android/app/.cxx/Debug/1u184tg5/arm64-v8a/CMakeFiles/rebuild_cache.dir
