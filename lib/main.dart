@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gitweather2/cubits/get-weather-cubit/get-weather-cubit.dart';
+import 'package:gitweather2/cubits/get-weather-cubit/get-weather-states.dart';
 import 'package:gitweather2/views/home-view.dart';
 
 void main() {
@@ -16,17 +17,21 @@ class GitWeather2 extends StatelessWidget {
     return BlocProvider(
         create: (context) => GetWeatherCubit(),
         child: Builder(
-          builder: (context) => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              useMaterial3: false,
-              primarySwatch: getThemeColor(
-                BlocProvider.of<GetWeatherCubit>(context)
-                    .weatherModel
-                    ?.weatherCondition,
-              ),
-            ),
-            home: HomeView(),
+          builder: (context) => BlocBuilder<GetWeatherCubit, WeatherState>(
+            builder: (context, state) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: ThemeData(
+                  useMaterial3: false,
+                  primarySwatch: getThemeColor(
+                    BlocProvider.of<GetWeatherCubit>(context)
+                        .weatherModel
+                        ?.weatherCondition,
+                  ),
+                ),
+                home: HomeView(),
+              );
+            },
           ),
         ));
   }
@@ -36,7 +41,7 @@ MaterialColor getThemeColor(String? condition) {
   if (condition == null) {
     return Colors.blue;
   }
-  switch (condition) {
+  switch (condition.toLowerCase()) {
     case 'sunny':
     case 'clear':
       return Colors.orange;
